@@ -1,7 +1,9 @@
 resource "aws_instance" "this" {
+  count = length(var.private_subnet_ids)
+
   ami                         = var.ami_id
   instance_type               = var.instance_type
-  subnet_id                   = var.private_subnet_id
+  subnet_id                   = var.private_subnet_ids[count.index]
   vpc_security_group_ids      = [var.app_sg_id]
   iam_instance_profile        = var.iam_instance_profile
   associate_public_ip_address = false

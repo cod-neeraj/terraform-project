@@ -8,10 +8,8 @@ variable "vpc_cidr" {
   type        = string
 }
 
-
 variable "private_subnet_cidr" {
-  description = "CIDR block for private subnet"
-  type        = string
+  type = list(string)
 }
 
 variable "az" {

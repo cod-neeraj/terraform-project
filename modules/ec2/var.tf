@@ -14,9 +14,9 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
-variable "private_subnet_id" {
+variable "private_subnet_ids" {
   description = "Private subnet ID"
-  type        = string
+  type        = list(string)
 }
 
 variable "app_sg_id" {

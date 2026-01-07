@@ -56,22 +56,28 @@ module "alb" {
 module "ec2" {
   source = "../../modules/ec2"
 
+
   name                 = var.name
   ami_id               = var.ami_id
   instance_type        = var.instance_type
-  private_subnet_id    = module.vpc.private_subnet_ids[0]
+  private_subnet_ids    = module.vpc.private_subnet_ids
   app_sg_id            = module.security_groups.app_sg_id
   iam_instance_profile = module.iam.instance_profile_name
   docker_image         = var.docker_image
   ecr_repo             = var.ecr_repo
   region               = var.region
+
 }
+
 
 # -----------------------------
 # Attach EC2 to ALB Target Group
 # -----------------------------
 resource "aws_lb_target_group_attachment" "app" {
+  count = length(module.ec2.instance_ids)
+
   target_group_arn = module.alb.target_group_arn
-  target_id        = module.ec2.instance_id
+  target_id        = module.ec2.instance_ids[count.index]
   port             = 8080
 }
+

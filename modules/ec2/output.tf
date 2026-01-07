@@ -1,7 +1,7 @@
-output "instance_id" {
-  value = aws_instance.this.id
+output "instance_ids" {
+  value = aws_instance.this[*].id
 }
 
-output "private_ip" {
-  value = aws_instance.this.private_ip
+output "private_ips" {
+  value = aws_instance.this[*].private_ip
 }

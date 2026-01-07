@@ -10,10 +10,6 @@ variable "vpc_cidr" {
   type = string
 }
 
-variable "private_subnet_cidr" {
-  type = string
-}
-
 variable "az" {
   type = list(string)
 }
@@ -22,13 +18,18 @@ variable "public_subnet_cidr" {
   type = list(string)
 }
 
+variable "private_subnet_cidr" {
+  type = list(string)
+}
+
+
 variable "ami_id" {
   type = string
 }
 
 variable "instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t3.micro"
 }
 
 variable "docker_image" {

@@ -31,14 +31,14 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  count = length(var.az)
+  count = length(var.private_subnet_cidr)
 
   vpc_id            = aws_vpc.this.id
-  cidr_block        = var.private_subnet_cidr
+  cidr_block        = var.private_subnet_cidr[count.index]
   availability_zone = var.az[count.index]
 
   tags = {
-    Name = "private-subnet-${count.index}"
+    Name = "${var.name}-private-subnet-${count.index}"
   }
 }
 
