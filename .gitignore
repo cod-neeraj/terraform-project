@@ -1,0 +1,58 @@
+####################################
+# Terraform core files
+####################################
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+####################################
+# Terraform variable & secrets files
+####################################
+*.tfvars
+*.tfvars.json
+
+####################################
+# Crash & log files
+####################################
+crash.log
+crash.*.log
+*.log
+
+####################################
+# Override files
+####################################
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+####################################
+# CLI config & credentials
+####################################
+.terraformrc
+terraform.rc
+
+####################################
+# Environment files
+####################################
+.env
+.env.*
+env/**/.env
+
+####################################
+# Editor & OS files
+####################################
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+####################################
+# Devcontainer (optional)
+####################################
+.devcontainer/.env
